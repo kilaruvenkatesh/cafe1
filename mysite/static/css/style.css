@@ -1,0 +1,333 @@
+/* ==============================
+   Simple Tea Shop - Chai Corner
+   Works with the previous HTML
+   ============================== */
+
+:root {
+  --bg: #FBF7F1;
+  --card: #fff;
+  --accent: #b33b2a;
+  --muted: #6b6b6b;
+  --shadow: 0 6px 18px rgba(17, 17, 17, 0.08);
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Base reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(180deg, #FFFDFB 0%, #FBF7F1 100%);
+  color: #222;
+}
+
+/* Layout wrapper */
+.wrap {
+  max-width: 1000px;
+  margin: 28px auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+p.lead {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Open badge */
+.badge {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #ffece6;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Hero section */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+@media (max-width: 840px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+}
+
+/* Card container */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+/* Menu grid */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 14px;
+}
+
+@media (max-width: 520px) {
+  .menu {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Menu items */
+.item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: #fff;
+}
+/* ===== Receipt Popup ===== */
+.receipt-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none; /* Hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.receipt-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  width: 320px;
+  text-align: center;
+}
+
+.receipt-box h2 {
+  margin-top: 0;
+  color: #b33b2a;
+}
+.menu-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.item {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 160px;
+  padding: 12px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.item:hover {
+  transform: translateY(-5px);
+}
+
+.item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item h3 {
+  margin: 8px 0 4px;
+  color: #b33b2a;
+}
+
+.item p {
+  margin: 0;
+  color: #555;
+  font-weight: bold;
+}
+
+.add-to-cart {
+  background: #b33b2a;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-top: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.add-to-cart:hover {
+  background: #922d19;
+}
+
+#receiptDetails {
+  text-align: left;
+  margin: 14px 0;
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+.receipt-total {
+  margin: 10px 0;
+  font-size: 16px;
+  color: #000;
+}
+
+#closeReceipt {
+  background: #b33b2a;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#closeReceipt:hover {
+  background: #922d19;
+}
+/* ===== Popup Common Styles ===== */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 320px;
+}
+
+.popup-box h2 {
+  color: #b33b2a;
+  margin-bottom: 10px;
+}
+
+.popup-box button {
+  margin: 8px;
+  background: #b33b2a;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+/* ===== Popups (payment + receipt) ===== */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 14px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.popup-box h2 {
+  color: #b33b2a;
+  margin-bottom: 12px;
+}
+
+.popup-box button {
+  margin: 8px;
+  background: #b33b2a;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.popup-box button:hover {
+  background: #922d19;
+}
+
+.popup-box img {
+  margin: 10px 0;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.item img {
+  width: 78px;
+  height: 78px;
+  border-radius: 8px;
+  object-fit: cove
+
